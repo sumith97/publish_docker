@@ -1,8 +1,7 @@
-# Use an official Ubuntu runtime as a parent image
-FROM ubuntu:latest
+FROM python:3.9-slim
 
-# Install curl for making HTTP requests
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
 
-# Define the command to run when the container starts
-CMD ["curl", "-I", "http://google.com"]
+COPY . /app
+
+CMD ["python", "app.py"]
